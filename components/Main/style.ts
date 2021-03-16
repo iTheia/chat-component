@@ -3,11 +3,13 @@ import { CSSProperties } from "react";
 
 export const HEADER_HEIGHT = 61;
 export const FOOTER_HEIGHT = 78;
+
 export const CHAT_STYLES: CSSProperties = {
   display: "flex",
   flexDirection: "column-reverse",
-  padding: "0 20px",
+  padding: "10px 20px",
 };
+
 export const useStyles = makeStyles((theme) => ({
   root: {
     display: "grid",
