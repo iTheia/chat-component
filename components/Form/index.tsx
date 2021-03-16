@@ -3,9 +3,9 @@ import { AttachFile } from "@material-ui/icons";
 import { Formik } from "formik";
 import { TextField, useTheme } from "@material-ui/core";
 import { useStyles } from "./style";
-const initialValues = {};
+import { PLACE_HOLDER, initialValues, BUTTON_TEXT } from "./const";
 
-export const ChatForm = () => {
+export const ChatForm: React.FC = () => {
   const theme = useTheme();
   const classes = useStyles(theme);
   function handleSubmit() {}
@@ -16,11 +16,15 @@ export const ChatForm = () => {
           <AttachFile color='primary' fontSize='large' />
           <TextField
             variant='outlined'
-            placeholder='Escribe un mensaje'
+            placeholder={PLACE_HOLDER}
             className={classes.input}
           />
-          <button className={classes.button} type='submit' disabled={true}>
-            Submit
+          <button
+            className={classes.button}
+            type='submit'
+            disabled={isSubmitting}
+          >
+            {BUTTON_TEXT}
           </button>
         </form>
       )}

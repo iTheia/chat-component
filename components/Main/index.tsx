@@ -9,10 +9,31 @@ import { ChatControls } from "../Controls";
 import { ChatForm } from "../Form";
 import { HeaderContainer, ScrollContainer } from "../Containers";
 import { ChatProviders } from "../../providers";
+import { useTheme } from "@material-ui/core";
 
-export const Chat: React.FC<ChatProps> = ({ rigthPanel, leftPanel, url }) => {
-  const classes = useStyles();
+export const Chat: React.FC<ChatProps> = ({
+  rigthPanel,
+  leftPanel = true,
+  url,
+}) => {
+  const theme = useTheme();
+  const classes = useStyles({ ...theme, leftPanel });
 
+  if (!leftPanel) {
+    return (
+      <ChatProviders>
+        <div className={classes.root}>
+          <HeaderContainer>
+            <ChatHeader />
+          </HeaderContainer>
+          <ScrollContainer styles={CHAT_STYLES}>
+            <ChatMessages />
+          </ScrollContainer>
+          <ChatForm />
+        </div>
+      </ChatProviders>
+    );
+  }
   return (
     <ChatProviders>
       <div className={classes.root}>

@@ -17,7 +17,7 @@ export const useStyles = makeStyles(({ palette }) => ({
     height: "56px",
     flex: "0 0 90px",
     borderRadius: "0 6px 6px 0",
-    border: `1px solid ${palette.primary}`,
+    border: `1px solid ${palette.primary.main}`,
     backgroundColor: palette.primary.main,
     color: palette.primary.contrastText,
   },

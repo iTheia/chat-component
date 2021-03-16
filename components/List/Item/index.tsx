@@ -1,38 +1,49 @@
-import { Avatar, Box, Typography } from "@material-ui/core";
+import { Avatar, Box, Typography, useTheme } from "@material-ui/core";
 import React from "react";
+import { capitalize } from "../../../util";
+import { useStyles } from "./style";
 
-export const ListItem = () => {
+interface Props {
+  item: {
+    talker: {
+      name: string;
+      image: string;
+    };
+    lastMessage: {
+      date: string;
+      content: string;
+    };
+  };
+}
+
+export const ListItem: React.FC<Props> = ({
+  item: { lastMessage, talker },
+}) => {
+  const theme = useTheme();
+  const classes = useStyles(theme);
   return (
-    <Box
-      style={{
-        borderBottom: `1px solid #003781`,
-        padding: "10px 5px",
-        display: "grid",
-        gridTemplateColumns: "40px 1fr max-content",
-        gridGap: "5px",
-      }}
-    >
-      <Avatar
-        style={{ gridRow: "span 2" }}
-        src='https://picsum.photos/200/300'
-      />
-      <Typography variant='subtitle1' color='primary'>
-        numero de control
+    <Box className={classes.container}>
+      <Avatar className={classes.avatar} src={talker.image} />
+      <Typography
+        variant='subtitle1'
+        className={classes.firstMessage}
+        color='primary'
+      >
+        {capitalize(talker.name)}
       </Typography>
-      <Typography variant='subtitle2'>fecha</Typography>
+      <Typography className={classes.firstMessage} variant='subtitle2'>
+        {lastMessage.date}
+      </Typography>
       <Typography
         noWrap={true}
         paragraph
         variant='subtitle2'
+        className={classes.firstMessage}
         style={{
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          margin: 0,
           gridColumn: "span 2",
         }}
       >
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore quo
-        minus cupiditate pariatur velit quae a illo vero atque. Unde?
+        {lastMessage.content}
       </Typography>
     </Box>
   );

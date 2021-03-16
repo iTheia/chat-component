@@ -23,10 +23,9 @@ export const useStyles = makeStyles<Theme, Props>(({ palette }) => ({
     isMine
       ? {
           ...text,
-          backgroundColor: palette.primary.light,
+          backgroundColor: palette.primary.dark,
           color: palette.primary.contrastText,
           borderRadius: "14px 14px 0 14px",
-          border: `1px solid ${palette.primary.light}`,
         }
       : {
           ...text,

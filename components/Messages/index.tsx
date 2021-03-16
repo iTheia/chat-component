@@ -1,4 +1,3 @@
-import { Box } from "@material-ui/core";
 import React, { Fragment } from "react";
 import { dummyArray } from "../../../../util";
 import { Message } from "./Message";
